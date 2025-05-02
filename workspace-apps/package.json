@@ -6,8 +6,12 @@
     "start": "ng serve host-app --configuration development",
     "build": "ng build",
     "create-host-mf": "ng add @angular-architects/module-federation --project host-app --port 4200 --type host",
+    "create-remote-carts": "ng add @angular-architects/module-federation --project carts --port 4201 --type remote",
+    "create-remote-orders": "ng add @angular-architects/module-federation --project orders --port 4202 --type remote",
+    "create-remote-products": "ng add @angular-architects/module-federation --project products --port 4203 --type remote",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +39,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ngx-build-plus": "^19.0.0",
     "typescript": "~5.7.2"
   }
 }
