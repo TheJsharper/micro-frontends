@@ -32,11 +32,9 @@
 							}
 						],
 						"styles": [
-							"projects/host-app/src/styles.scss",
-							"node_modules/bootstrap/dist/css/bootstrap.min.css"
+							"projects/host-app/src/styles.scss"
 						],
 						"scripts": [
-							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 						],
 						"main": "projects/host-app/src/main.ts",
 						"extraWebpackConfig": "projects/host-app/webpack.config.js",
@@ -240,9 +238,12 @@
 							}
 						],
 						"styles": [
-							"projects/products/src/styles.css"
+							"projects/products/src/styles.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
-						"scripts": [],
+						"scripts": [
+							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+						],
 						"main": "projects/products/src/main.ts",
 						"extraWebpackConfig": "projects/products/webpack.config.js",
 						"commonChunk": false
