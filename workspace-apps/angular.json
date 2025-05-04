@@ -32,9 +32,11 @@
 							}
 						],
 						"styles": [
-							"projects/host-app/src/styles.scss"
+							"projects/host-app/src/styles.scss",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
 						"scripts": [
+							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 						],
 						"main": "projects/host-app/src/main.ts",
 						"extraWebpackConfig": "projects/host-app/webpack.config.js",
