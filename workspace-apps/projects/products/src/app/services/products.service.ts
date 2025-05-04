@@ -29,11 +29,12 @@ export interface Rating {
 export class ProductsService {
 
   baseUrl = 'https://fakestoreapi.com/products';
+
   constructor() { }
 
 
-  userResource = resource({
-    loader: async (params:ResourceLoaderParams<Array<Product>>) => {
+  userResource = resource<Array<Product>, unknown>({
+    loader: async () => {
       const response = await fetch(`${this.baseUrl}`);
       if (!response.ok) {
         throw new Error('Failed to fetch users');
@@ -43,6 +44,10 @@ export class ProductsService {
   });
   reloadUsers() {
     this.userResource.reload();
+  }
+
+  addToCart(product: Product) {
+    console.log('Product added to cart:', product);
   }
 }
 
