@@ -13,9 +13,7 @@ export class AppComponent {
 
   productService = inject(ProductsService, { optional: true, skipSelf: true });
 
-  ngOnInit() {
-    // this.productService.userResource.load({request: {sort: 'asc'}})
-  }
+ 
 
   reloadUsers() {
     this.productService?.reloadUsers()

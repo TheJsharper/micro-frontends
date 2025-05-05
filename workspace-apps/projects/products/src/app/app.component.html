@@ -3,10 +3,10 @@
   <div class="col-md-3">
     <div class="card border-primary h-100" style="max-width: 20rem;">
       <img src="{{item.image}}" class="card-img-top" alt="..." style="aspect-ratio: 1;">
-      <div class="card-header">Header</div>
+      <div class="card-header">{{item.title}}</div>
       <div class="card-body">
-        <h4 class="card-title">Primary card title</h4>
-        <p class="card-text">{{item.title}}.</p>
+        <h4 class="card-title">{{item.title}}</h4>
+        <p class="card-text">{{item.description}}.</p>
       </div>
       <div class="card-footer">
         <div class="row">
@@ -21,6 +21,11 @@
     </div>
   </div>
   }
+  @empty {
+    <div class="col-md-12">
+      <h2  class="text-info" >No items in the Products</h2>
+    </div>
+    }
 </div>
 <div *ngIf="productService?.userResource?.isLoading()">Loading...</div>
 

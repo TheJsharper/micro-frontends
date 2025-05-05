@@ -28,7 +28,14 @@ export class ProductsService {
 
   baseUrl = 'https://fakestoreapi.com/products';
 
-  private _productsCarts: WritableSignal<Product[]>; //= signal([]);
+  private _productsCarts: WritableSignal<Product[]>;
+
+  private _orders: WritableSignal<Product[]> = signal([]);
+  
+  
+  get orders(): WritableSignal<Product[]> {
+    return this._orders;
+  }
 
   get productsCarts(): WritableSignal<Product[]> {
     return this._productsCarts;
@@ -36,6 +43,7 @@ export class ProductsService {
 
   constructor() {
      this._productsCarts = signal([]);
+    this._orders = signal([]);
    }
 
 
@@ -48,6 +56,7 @@ export class ProductsService {
       return await response.json();
     }
   });
+
   reloadUsers() {
     this.userResource.reload();
   }
@@ -56,16 +65,55 @@ export class ProductsService {
     this._productsCarts.update((carts) => {
       const existingProduct = carts.find((item) => item.id === product.id);
       if (existingProduct) {
-        // If the product already exists in the cart, remove it
         console.log('the product already exists in the cart', product);
-        return carts //.filter((item) => item.id !== product.id);
+        return carts
       } else {    
-        // If the product doesn't exist in the cart, add it
         console.log('Product added to cart:', product);
         return [...carts, product];
       }
     });
   }
+
+
+
+  removeFromCart(item: Product): void {
+    this._productsCarts.update((carts) => {
+      const existingProduct = carts.find((product) => product.id === item.id);
+      if (existingProduct) {
+        console.log('the product already exists in the cart', item);
+        return carts.filter((product) => product.id !== item.id);
+      } else {
+        console.log('Product added to cart:', item);
+        return [...carts];
+      }
+    });
+  }
+  removeFromOrders(item: Product): void {
+    this._orders.update((orders) => {
+      const existingProduct = orders.find((product) => product.id === item.id);
+      if (existingProduct) {
+        console.log('the product already exists in the orders', item);
+        return orders.filter((product) => product.id !== item.id);
+      } else {
+        console.log('Product added to orders:', item);
+        return [...orders];
+      }
+    });
+  }
+
+  addToOrders(product: Product) {
+    this._orders.update((orders) => {
+      const existingProduct = orders.find((item) => item.id === product.id);
+      if (existingProduct) {
+        console.log('the product already exists in the orders', product);
+        return orders
+      } else {    
+        console.log('Product added to orders:', product);
+        return [...orders, product];
+      }
+    });
+  }
+  
 }
 
 
