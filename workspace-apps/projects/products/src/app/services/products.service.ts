@@ -114,6 +114,16 @@ export class ProductsService {
     });
   }
   
+  searchProducts(term: string, url:string): void {
+    console.log(`Searching products with term: ${term} ==>x> ${url}`);
+    if(url.includes('products')) {
+      this.userResource.update((products) => {
+        return products?.filter((product) =>
+          product.title.toLowerCase().includes(term.toLowerCase())
+        );
+      })
+    }
+  }
 }
 
 
