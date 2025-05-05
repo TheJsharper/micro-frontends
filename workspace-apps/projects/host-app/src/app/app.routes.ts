@@ -17,4 +17,14 @@ export const routes: Routes = [
         path: 'orders',
         loadComponent: () => import('@orders').then(m => m.AppComponent)
     },
+    {
+        path: '',
+        redirectTo: 'products',
+        pathMatch: 'full'
+    },
+    {
+        path: '**',
+        redirectTo: 'products', 
+        pathMatch: 'full'
+    }
 ];
