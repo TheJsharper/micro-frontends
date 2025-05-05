@@ -1,5 +1,5 @@
 <div class="row m-2">
-  @for (item of productService.userResource.value(); track item.id) {
+  @for (item of productService?.userResource?.value(); track item.id) {
   <div class="col-md-3">
     <div class="card border-primary h-100" style="max-width: 20rem;">
       <img src="{{item.image}}" class="card-img-top" alt="..." style="aspect-ratio: 1;">
@@ -14,7 +14,7 @@
             <p><b>Price: {{item.price| currency :'€'}}</b></p>
           </div>
           <div class="col-md-6">
-            <button class="btn btn-warning" (click)="productService.addToCart(item)">Add to cart</button>
+            <button class="btn btn-warning" (click)="productService?.addToCart(item)">Add to cart</button>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
   </div>
   }
 </div>
-<div *ngIf="productService.userResource.isLoading()">Loading...</div>
+<div *ngIf="productService?.userResource?.isLoading()">Loading...</div>
 
 
 <router-outlet></router-outlet>

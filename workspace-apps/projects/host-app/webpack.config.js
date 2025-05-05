@@ -1,4 +1,4 @@
-const { shareAll, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
+const { shareAll, withModuleFederationPlugin, share } = require('@angular-architects/module-federation/webpack');
 
 module.exports = withModuleFederationPlugin({
 
@@ -8,8 +8,14 @@ module.exports = withModuleFederationPlugin({
     "orders": "http://localhost:4203",    
   },
 
-  shared: {
+ /* shared: {
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
-  },
+  },*/
+  shared: share({
+    "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+    "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+    "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },                     
+    "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+}),
 
 });

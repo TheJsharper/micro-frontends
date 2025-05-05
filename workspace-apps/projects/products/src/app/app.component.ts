@@ -5,19 +5,19 @@ import { ProductsService } from './services/products.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,  NgIf, CurrencyPipe],
+  imports: [RouterOutlet, NgIf, CurrencyPipe],
   templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'products';
 
-  productService= inject(ProductsService)
+  productService = inject(ProductsService, { optional: true, skipSelf: true });
 
   ngOnInit() {
-   // this.productService.userResource.load({request: {sort: 'asc'}})
+    // this.productService.userResource.load({request: {sort: 'asc'}})
   }
 
   reloadUsers() {
-    this.productService.reloadUsers()
+    this.productService?.reloadUsers()
   }
 }

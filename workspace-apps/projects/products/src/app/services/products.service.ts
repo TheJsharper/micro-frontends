@@ -1,4 +1,4 @@
-import { Injectable, resource, ResourceLoaderParams } from '@angular/core';
+import { Injectable, resource, signal, WritableSignal } from '@angular/core';
 
 export interface Product {
   id:          number;
@@ -23,14 +23,20 @@ export interface Rating {
 }
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProductsService {
 
   baseUrl = 'https://fakestoreapi.com/products';
 
-  constructor() { }
+  private _productsCarts: WritableSignal<Product[]>; //= signal([]);
+
+  get productsCarts(): WritableSignal<Product[]> {
+    return this._productsCarts;
+  }
+
+  constructor() {
+     this._productsCarts = signal([]);
+   }
 
 
   userResource = resource<Array<Product>, unknown>({
@@ -47,7 +53,18 @@ export class ProductsService {
   }
 
   addToCart(product: Product) {
-    console.log('Product added to cart:', product);
+    this._productsCarts.update((carts) => {
+      const existingProduct = carts.find((item) => item.id === product.id);
+      if (existingProduct) {
+        // If the product already exists in the cart, remove it
+        console.log('the product already exists in the cart', product);
+        return carts //.filter((item) => item.id !== product.id);
+      } else {    
+        // If the product doesn't exist in the cart, add it
+        console.log('Product added to cart:', product);
+        return [...carts, product];
+      }
+    });
   }
 }
 

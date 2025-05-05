@@ -3,4 +3,9 @@
     {{title}} app is running!
   </h2>
 </div>
+<ul>
+  @for (item of productService?.productsCarts(); track item.id) {
+    <li>{{item.title}}</li>
+  }
+</ul>
 <router-outlet></router-outlet>
