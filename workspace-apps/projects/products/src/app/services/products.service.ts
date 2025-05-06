@@ -1,13 +1,13 @@
-import { Injectable, resource, signal, WritableSignal } from '@angular/core';
+import { computed, Injectable, resource, Signal, signal, WritableSignal } from '@angular/core';
 
 export interface Product {
-  id:          number;
-  title:       string;
-  price:       number;
+  id: number;
+  title: string;
+  price: number;
   description: string;
-  category:    Category;
-  image:       string;
-  rating:      Rating;
+  category: Category;
+  image: string;
+  rating: Rating;
 }
 
 export enum Category {
@@ -18,7 +18,7 @@ export enum Category {
 }
 
 export interface Rating {
-  rate:  number;
+  rate: number;
   count: number;
 }
 
@@ -30,9 +30,14 @@ export class ProductsService {
 
   private _productsCarts: WritableSignal<Product[]>;
 
-  private _orders: WritableSignal<Product[]> = signal([]);
+  private _orders: WritableSignal<Product[]>;
   
+  private _productsCopy?: Signal<Product[] | undefined>;
   
+  private _ordersCopry: WritableSignal<Product[]>;
+
+  private _productsCartsCopy: WritableSignal<Product[]>;
+
   get orders(): WritableSignal<Product[]> {
     return this._orders;
   }
@@ -42,9 +47,12 @@ export class ProductsService {
   }
 
   constructor() {
-     this._productsCarts = signal([]);
+    this._productsCarts = signal([]);
     this._orders = signal([]);
-   }
+    this._ordersCopry = signal([]);
+    this._productsCartsCopy = signal([]);
+
+  }
 
 
   userResource = resource<Array<Product>, unknown>({
@@ -53,7 +61,9 @@ export class ProductsService {
       if (!response.ok) {
         throw new Error('Failed to fetch users');
       }
-      return await response.json();
+      const data = await response.json();
+      this._productsCopy = signal(data);
+      return data;
     }
   });
 
@@ -67,11 +77,12 @@ export class ProductsService {
       if (existingProduct) {
         console.log('the product already exists in the cart', product);
         return carts
-      } else {    
+      } else {
         console.log('Product added to cart:', product);
         return [...carts, product];
       }
     });
+    this._productsCartsCopy.set(this._productsCarts());
   }
 
 
@@ -87,6 +98,7 @@ export class ProductsService {
         return [...carts];
       }
     });
+    this._productsCartsCopy.set(this._productsCarts());
   }
   removeFromOrders(item: Product): void {
     this._orders.update((orders) => {
@@ -99,6 +111,7 @@ export class ProductsService {
         return [...orders];
       }
     });
+    this._ordersCopry.set(this._orders());
   }
 
   addToOrders(product: Product) {
@@ -107,18 +120,35 @@ export class ProductsService {
       if (existingProduct) {
         console.log('the product already exists in the orders', product);
         return orders
-      } else {    
+      } else {
         console.log('Product added to orders:', product);
         return [...orders, product];
       }
     });
+    this._ordersCopry.set(this._orders());
   }
-  
-  searchProducts(term: string, url:string): void {
-    console.log(`Searching products with term: ${term} ==>x> ${url}`);
-    const copyProducts = this.userResource;
-    if(url.includes('products')) {
+
+  searchProducts(term: string, url: string): void {
+    if (this._productsCopy !== undefined) {
+      let list = this._productsCopy();
+      this.userResource.set(list);
+    }
+    this._productsCarts.set(this._productsCartsCopy());
+    this._orders.set(this._ordersCopry());
+    if (url.includes('products')) {
       this.userResource.update((products) => {
+        return products?.filter((product) =>
+          product.title.toLowerCase().includes(term.toLowerCase())
+        );
+      })
+    } else if (url.includes('orders')) {
+      this._orders.update((products) => {
+        return products?.filter((product) =>
+          product.title.toLowerCase().includes(term.toLowerCase())
+        );
+      })
+    } else if (url.includes('cart')) {
+      this._productsCarts.update((products) => {
         return products?.filter((product) =>
           product.title.toLowerCase().includes(term.toLowerCase())
         );
