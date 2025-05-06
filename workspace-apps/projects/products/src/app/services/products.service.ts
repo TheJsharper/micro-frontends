@@ -26,7 +26,7 @@ export interface Rating {
 @Injectable()
 export class ProductsService {
 
-  baseUrl = 'https://fakestoreapi.com/products';
+  private baseUrl = 'https://fakestoreapi.com/products';
 
   private _productsCarts: WritableSignal<Product[]>;
 

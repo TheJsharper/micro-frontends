@@ -11,11 +11,8 @@ import { ProductsService } from 'projects/products/src/app/services';
 export class AppComponent {
   searchTerm: string = '';
   productService: ProductsService | null = inject(ProductsService, { optional: true, skipSelf: true });
-  router:Router = inject(Router);
+  router: Router = inject(Router);
   onSearchChange(term: string) {
-    //const input = event.target as HTMLInputElement;
-    //this.searchTerm = input.value;
     this.productService?.searchProducts(term, this.router.url);
-    console.log('Search term:', this.searchTerm, this.router.url);
   }
 }

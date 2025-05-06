@@ -23,9 +23,10 @@
   </div>
 </nav>
 
-<div class="row-md-12">
+<div class="row-md-12 mt-5 mb-5">
+  <div class="col-md-12">
   <input type="text" class="form-control" placeholder="Search" aria-label="Search" [ngModel]="searchTerm" (ngModelChange)="onSearchChange($event)" />
-
+  </div>  
 </div>
 
 <router-outlet />
