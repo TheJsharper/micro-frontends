@@ -1,9 +1,13 @@
 import React from 'react';
-import ReactDom from 'react-dom/client';
+import './styles.css';
+import logo from './logo.png';
+import svg from './react.svg';
 export const App = () => {
   return (
     <div>
-      <h1>React Template</h1>
+      <h1>React Template  -{process.env.NODE_ENV}-{process.env.name}</h1>
+      <img src={logo} alt="Placeholder"  width="50" height="50"/>
+      <img src={svg} alt="Placeholder"  width="50" height="50"/>
       <p>Welcome to the React template!</p>
     </div>
   );
