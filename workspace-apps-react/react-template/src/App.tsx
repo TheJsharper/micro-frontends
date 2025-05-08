@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.css';
 import logo from './logo.png';
 import svg from './react.svg';
+import { Counter } from './Counter';
 export const App = () => {
   return (
     <div>
@@ -9,6 +10,7 @@ export const App = () => {
       <img src={logo} alt="Placeholder"  width="50" height="50"/>
       <img src={svg} alt="Placeholder"  width="50" height="50"/>
       <p>Welcome to the React template!</p>
+      <Counter />
     </div>
   );
 }
