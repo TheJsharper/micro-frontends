@@ -12,8 +12,12 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
-        "outDir": "./build"
+        "outDir": "./build",
+        "paths": {
+            "@Products": ["./projects/products/src/index.ts"],
+        }
     },
-    "include": ["src"],
+    
+    
     "exclude": ["node_modules", "**/*.spec.ts"] 
 }

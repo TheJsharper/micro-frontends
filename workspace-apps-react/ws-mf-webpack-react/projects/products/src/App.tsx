@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 import logo from './logo.png';
 import svg from './react.svg';
-export const App = () => {
+ export function App () {
   const test = 'test';
   return (
     <div>

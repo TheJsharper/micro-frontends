@@ -6,7 +6,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.name': JSON.stringify('Development simple react template'),
             'process.env.version': JSON.stringify('1.0.0'),
-        
+
 
         })
     ]

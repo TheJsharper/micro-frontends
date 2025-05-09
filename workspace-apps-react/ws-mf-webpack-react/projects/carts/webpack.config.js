@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 module.exports = {
     entry: path.resolve(__dirname, './src/index.tsx'),
     resolve: {
@@ -37,7 +38,26 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html')
-        })
+        }),
+        new ModuleFederationPlugin({
+            name: 'carts',
+            filename: 'remoteEntry.js',
+            exposes: {
+                './Carts': path.resolve(__dirname, './src/App.tsx'),
+            },
+            shared: {
+                react: {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: '^17.0.2'
+                },
+                'react-dom': {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: '^17.0.2'
+                }
+            }
+        })  
     ],
     devServer: {
         static: {
