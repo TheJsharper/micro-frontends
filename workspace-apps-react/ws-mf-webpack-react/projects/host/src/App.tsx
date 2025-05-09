@@ -1,8 +1,7 @@
 import React from 'react';
-import './styles.scss';
 import logo from './logo.png';
 import svg from './react.svg';
-import * as bootstrap from 'bootstrap'
+import './styles.scss';
 
 const ProductsApp = React.lazy(() => import('products/Products').then((module) => ({ default: module.App })));
 
