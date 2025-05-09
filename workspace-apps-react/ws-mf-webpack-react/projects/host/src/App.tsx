@@ -14,23 +14,25 @@ export const App = () => {
     <div className=" app-container">
       <BrowserRouter >
         <HostNav />
-        <Routes>
-          <Route path="/" element={
-            <React.Suspense fallback={<div>Loading...</div>}>
-              <ProductsApp />
-            </React.Suspense>
-          } />
-          <Route path="orders" element={
-            <React.Suspense fallback={<div>Loading...</div>}>
-              <OrdersApp />
-            </React.Suspense>
-          } />
-          <Route path="carts" element={
-            <React.Suspense fallback={<div>Loading...</div>}>
-              <CartsApp />
-            </React.Suspense>
-          } />
-        </Routes>
+        <div className='container-fluid'>
+          <Routes >
+            <Route path="/" element={
+              <React.Suspense fallback={<div>Loading...</div>}>
+                <ProductsApp />
+              </React.Suspense>
+            } />
+            <Route path="orders" element={
+              <React.Suspense fallback={<div>Loading...</div>}>
+                <OrdersApp />
+              </React.Suspense>
+            } />
+            <Route path="carts" element={
+              <React.Suspense fallback={<div>Loading...</div>}>
+                <CartsApp />
+              </React.Suspense>
+            } />
+          </Routes>
+        </div>
       </BrowserRouter>
 
     </div>
