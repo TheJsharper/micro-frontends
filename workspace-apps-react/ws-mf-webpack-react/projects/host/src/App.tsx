@@ -1,7 +1,8 @@
 import React from 'react';
-import './styles.css';
+import './styles.scss';
 import logo from './logo.png';
 import svg from './react.svg';
+import * as bootstrap from 'bootstrap'
 
 const ProductsApp = React.lazy(() => import('products/Products').then((module) => ({ default: module.App })));
 
@@ -26,6 +27,16 @@ export const App = () => {
         <React.Suspense fallback={<div>Loading...</div>}>
           <CartsApp />
         </React.Suspense>
+
+        <div className="mb-3">
+  <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
+  <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+</div>
+<div className="mb-3">
+  <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
+  <textarea className="form-control" id="exampleFormControlTextarea1" ></textarea>
+</div>
+        
       </div>
     </div>
   );

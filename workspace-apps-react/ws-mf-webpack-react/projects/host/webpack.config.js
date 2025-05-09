@@ -18,10 +18,19 @@ module.exports = {
                 }],
             },
             {
-                test: /\.css$/,
-                include: path.resolve(__dirname, './src'),
+                test: /\.(scss)$/,
+                include: path.resolve(__dirname, './src/styles'),
                 use: [
-                    'style-loader', 'css-loader'
+                    'style-loader', 'css-loader', 'sass-loader', {
+                        loader: 'postcss-loader',
+                        options: {
+                          postcssOptions: {
+                            plugins: () => [
+                              require('autoprefixer')
+                            ]
+                          }
+                        }
+                      },
                 ],
             },
             {
