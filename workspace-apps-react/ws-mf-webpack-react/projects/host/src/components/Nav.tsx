@@ -8,10 +8,10 @@ const HostNav: React.FC = () => {
           <Link  className='nav-link' to="/">Products</Link>
         </li>
         <li className="nav-item">
-          <Link  className='nav-link' to="/about">Orders</Link>
+          <Link  className='nav-link' to="/orders">Orders</Link>
         </li>
         <li className='nav-item'>
-          <Link  className='nav-link' to="/contact">Carts</Link>
+          <Link  className='nav-link' to="/carts">Carts</Link>
         </li>
       </ul>
   );

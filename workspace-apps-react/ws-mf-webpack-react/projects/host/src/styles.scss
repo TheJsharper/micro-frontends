@@ -7,4 +7,6 @@ h1{
 .app-container{
     display: flex;
     height: 100vh;
+    flex-direction: column;
+
 }

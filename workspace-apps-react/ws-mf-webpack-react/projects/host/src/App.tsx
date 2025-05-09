@@ -20,12 +20,12 @@ export const App = () => {
               <ProductsApp />
             </React.Suspense>
           } />
-          <Route path="about" element={
+          <Route path="orders" element={
             <React.Suspense fallback={<div>Loading...</div>}>
               <OrdersApp />
             </React.Suspense>
           } />
-          <Route path="contact" element={
+          <Route path="carts" element={
             <React.Suspense fallback={<div>Loading...</div>}>
               <CartsApp />
             </React.Suspense>
