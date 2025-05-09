@@ -1,9 +1,7 @@
 import React from 'react';
-import logo from './logo.png';
-import svg from './react.svg';
-import './styles.scss';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import HostNav from './components/Nav';
+import './styles.scss';
 
 const ProductsApp = React.lazy(() => import('products/Products').then((module) => ({ default: module.App })));
 
