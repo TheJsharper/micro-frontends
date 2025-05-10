@@ -24,13 +24,13 @@ module.exports = {
                     'style-loader', 'css-loader', 'sass-loader', {
                         loader: 'postcss-loader',
                         options: {
-                          postcssOptions: {
-                            plugins: () => [
-                              require('autoprefixer')
-                            ]
-                          }
+                            postcssOptions: {
+                                plugins: () => [
+                                    require('autoprefixer')
+                                ]
+                            }
                         }
-                      },
+                    },
                 ],
             },
             {
@@ -62,13 +62,28 @@ module.exports = {
                 react: {
                     singleton: true,
                     eager: true,
-                    requiredVersion: '^17.0.2'
+                    requiredVersion: '^19.1.0'
                 },
                 'react-dom': {
                     singleton: true,
                     eager: true,
-                    requiredVersion: '^17.0.2'
-                }
+                    requiredVersion: '^19.1.0'
+                },
+                'react-router-dom': {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: '^7.6.0'
+                },
+                'react-router': {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: '^7.6.0'
+                },
+                bootrap: {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: '^5.3.6'
+                },
             }
         })
     ],

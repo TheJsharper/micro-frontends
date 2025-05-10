@@ -43,18 +43,33 @@ module.exports = {
             name: 'products',
             filename: 'remoteEntry.js',
             exposes: {
-                './Products': path.resolve(__dirname,'./src/App.tsx'),
+                './Products': path.resolve(__dirname, './src/App.tsx'),
             },
             shared: {
                 react: {
                     singleton: true,
                     eager: true,
-                    requiredVersion: '^17.0.2'
+                    requiredVersion: '^19.1.0'
                 },
                 'react-dom': {
                     singleton: true,
                     eager: true,
-                    requiredVersion: '^17.0.2'
+                    requiredVersion: '^19.1.0'
+                },
+                'react-router-dom': {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: '^7.6.0'
+                },
+                'react-router': {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: '^7.6.0'
+                },
+                bootrap: {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: '^5.3.6'
                 },
             }
         })
