@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { BrowserRouter, Navigate, redirect, Route, Routes } from 'react-router';
 import HostNav from './components/Nav';
 import './styles.scss';
 
@@ -31,6 +31,7 @@ export const App = () => {
                 <CartsApp />
               </React.Suspense>
             } />
+            <Route path="*" element={ <Navigate replace to="/" /> } />
           </Routes>
         </div>
       </BrowserRouter>
