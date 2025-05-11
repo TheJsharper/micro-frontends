@@ -10,8 +10,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(ts|tsx)$/,
-                exclude: /node_modules/,
+                test: /\.(ts$|tsx$)/,
                 include: path.resolve(__dirname, './src'),
                 use: [{
                     loader: 'babel-loader'

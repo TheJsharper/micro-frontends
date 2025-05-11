@@ -1,9 +1,12 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
         "target": "esnext",
-        "module": "ESNext",
+        "module": "CommonJS",
         "moduleResolution": "node",
-        "lib": ["esnext", "dom"],
+        "declaration": true,
+        "sourceMap": true,
+       "lib": [ "es2015", "dom" ],
         "jsx": "react-jsx",
         "noEmit": true,
         "isolatedModules": true,
@@ -15,6 +18,7 @@
         "outDir": "./build",
         "paths": {
             "@Products": ["./projects/products/src/index.ts"],
+            "@Host": ["./projects/host/src/*"],
         }
     },
     
