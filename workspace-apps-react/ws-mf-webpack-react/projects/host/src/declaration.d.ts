@@ -19,7 +19,7 @@ declare module '*.png' {
   declare module 'orders/Orders' ;
   declare module  'carts/Carts' ;
 
-  declare module 'host/App' {
+ /* declare module 'host/App' {
     export interface AppContextType {
         user: string | null;
         setUser: (user: string | null) => void;
@@ -27,4 +27,4 @@ declare module '*.png' {
       export interface AppProviderProps {
         children: ReactNode;
       }
-  }
+  }*/

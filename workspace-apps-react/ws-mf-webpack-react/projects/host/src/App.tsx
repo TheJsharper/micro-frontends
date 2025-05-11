@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Navigate, redirect, Route, Routes } from 'react-router';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import HostNav from './components/Nav';
 import './styles.scss';
 
