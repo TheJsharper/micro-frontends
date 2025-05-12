@@ -1,3 +1,4 @@
+/*
 import { ReactNode } from "react";
 
 export interface AppContextType {
@@ -7,4 +8,4 @@ export interface AppContextType {
   export interface AppProviderProps {
     children: ReactNode;
   }
-  
+  */

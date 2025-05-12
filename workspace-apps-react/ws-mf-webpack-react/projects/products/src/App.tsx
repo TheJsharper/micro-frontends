@@ -2,13 +2,12 @@ import React, { useContext } from 'react';
 import './styles.css';
 import logo from './logo.png';
 import svg from './react.svg';
-import { AppContext } from '../../host/src/hooks/app-context';
-//import { type useAppContext } from '@Host '
-//import { useAppContext } from '../../host/src/hooks/use-appContext'
+import { AppContext } from '../../host/src/index';
+
 export function App() {
   const test = 'test';
   const context = useContext(AppContext);
-  const { user, setUser } = context ?? { user: null, setUser: () => {} };
+  const { user, setUser } = context?? { user: null, setUser: () => {} }; // Fallback to default values if context is undefined
   return (
     <div>
       <h1>React products  -{process.env.NODE_ENV}</h1>
