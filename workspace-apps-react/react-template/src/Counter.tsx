@@ -14,6 +14,7 @@ export const Counter = () => {
             <div>
             <h1>User: {user || 'Guest'}</h1>
             <button onClick={() => setUser('John Doe')}>Set User</button>
+            <input  type='text' onChange={ (event)=>{ setUser(event.target.value)}} ></input>
             </div>
         </div>
     );
